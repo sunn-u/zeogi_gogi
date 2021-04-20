@@ -24,7 +24,8 @@ class CustomDataset(Dataset):
 
             for img_file in img_files:
                 img_file = os.path.join(img_dir, img_file)
-                img = Image.open(img_file).convert('L')
+                img = Image.open(img_file).convert('L') # rgb image -> gray image
+                
                 if img is not None:
                     all_img_files.append(img_file)
                     all_labels.append(label)
