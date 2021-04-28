@@ -5,8 +5,8 @@ from torchvision import transforms, datasets
 import torchvision
 import sys
 
-DATA_PATH_TRAINING_LIST = glob('./dataset/train/*/*.jpg')
-DATA_PATH_TESTING_LIST = glob('./dataset/test/*/*.jpg')
+DATA_PATH_TRAINING_LIST = glob('/Users/ahrim/Desktop/dataset/train/*/*.jpg')
+DATA_PATH_TESTING_LIST = glob('/Users/ahrim/Desktop/dataset/test/*/*.jpg')
 
 from torch.utils.data import Dataset, DataLoader
 from skimage import io

@@ -130,6 +130,6 @@ classes = ('angry','disgust','fear','happy','neutral','sad','surprise')
 import torch.optim as optim
 
 criterion = nn.CrossEntropyLoss().cuda()
-optimizer = optim.Adam(net.parameters(),lr=0.00001)
+optimizer = optim.Adam(net.parameters(), lr=0.00001)
 
 
