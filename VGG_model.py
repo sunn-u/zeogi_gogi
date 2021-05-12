@@ -225,7 +225,7 @@ for epoch in range(2):
         trainCorrect += predicted.eq(labels.view_as(predicted)).sum().item()
         trainAccuracy = 100 * trainCorrect / trainSize
 
-    print(batchIdx, 'epoch, training acc: ', trainAccuracy, ',training loss: ', trainLoss)
+    print(epoch, 'epoch, training acc: ', trainAccuracy, ',training loss: ', trainLoss)
 
     """
     # validation
@@ -274,6 +274,6 @@ with torch.no_grad():
 
     accuracy = 100 * testCorrect / testSize
 
-    print(batchIdx, 'epoch, testing acc: ', accuracy, ',testing loss: ', testLoss)
+    print('testing acc: ', accuracy, ',testing loss: ', testLoss)
 
 
