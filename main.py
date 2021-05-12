@@ -9,10 +9,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from vggModule import VGG
+from configs import Configs
+from train import train
 
 
 def main():
-	make_train_val_set(opt.data)
+	make_train_val_set(Configs.data_root)
 	dataiter = iter(trainloader)
 	images, labels = dataiter.next()
 
@@ -26,14 +28,15 @@ def main():
 		'E': [64, 64, 'M', 128, 128, 'M', 256, 256, 256, 256, 'M', 512, 512, 512, 512, 'M', 512, 512, 512, 512, 'M']
 	}
 
-	conv = make_layers(cfg['D'], batch_norm=True)
-	model = VGG(conv, num_classes=7, init_weights=True)
+	conv = make_layers(cfg[Configs.model_config], batch_norm=True)
+	model = VGG(conv, num_classes=Configs.class_num, init_weights=True)
 	model
+
+	train()
+
+
 
 
 if __name__ == '__main__':
-	parser = argparse.ArgumentParser()
-	parser.add_argument('--data', type=str, default='/content/gdrive/Shareddrives/zeogi_gogi/dataset/', help='dataset path')
-	opt = parser.parse_args()
 	
 	main()

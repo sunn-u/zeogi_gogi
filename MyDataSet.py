@@ -8,6 +8,7 @@ import cv2
 from sklearn.model_selection import train_test_split
 from glob import glob
 import os
+from configs import Configs
 
 
 classes = ('fear', 'happy', 'sad', 'neutral', 'disgust', 'surprise', 'angry')

@@ -4,6 +4,7 @@ import torchvision.transforms as transforms
 
 import torch.nn as nn
 import torch.nn.functional as F
+from configs import Configs
 
 
 class VGG(nn.Module):
