@@ -7,8 +7,10 @@ import torchvision.transforms as transforms
 import torch.nn as nn
 import torch.nn.functional as F
 from configs import Configs
+from vggModule import *
+from MyDataLoader import *
 
-def train():
+def train(model, trainloader, testloader):
 
     model.train()
 
@@ -66,16 +68,16 @@ def train():
             if i % 50 == 49:    # print every 2000 mini-batches
                 torch.save(model, '/content/drive/MyDrive/vgg16_epoch{}_batch{}_accuracy{:.3f}.pt'.format(epoch+1, i+1, trainAccuracy))
                 print('epoch {} batch {} train_loss {}  accuracy {}'.format(epoch+1, i+1, trainLoss / 50, trainAccuracy))
-                #trainLoss = 0.0   # 이걸 해야할거같은..느낌...?
+                trainLoss = 0.0   # 이걸 해야할거같은..느낌...?
 
 
-        if i%5 == 0:
+        if i % 5 == 0:
             with torch.no_grad():
                 valLoss = 0
                 valSize = 0
                 valCorrect = 0
 
-                for j, data in enumerate(testloader):
+                for j, data in enumerate(testloader, 0):
                     # get the inputs
                     inputs, labels = data
                     inputs, labels = inputs.to(device), labels.to(device)
