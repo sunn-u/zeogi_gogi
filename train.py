@@ -56,19 +56,34 @@ def train(model, trainloader, testloader):
             trainCorrect += predicted.eq(labels.view_as(predicted)).sum().item()
             trainAccuracy = (trainCorrect / trainSize) * 100
 
+        torch.save(model, '/content/drive/MyDrive/vgg16_epoch{}_batch{}_accuracy{:.3f}.pt'.format(epoch+1, i+1, trainAccuracy))
+        torch.save({
+            'epoch': epoch,
+            'model_state_dict': model.state_dict(),
+            'optimizer_state_dict': optimizer.state_dict(),
+            'loss': trainLoss,
+            }, '/content/drive/MyDrive/vgg16_epoch{}_batch{}_accuracy{:.3f}.pth'.format(epoch+1, i+1, trainAccuracy))
+
+        #print('epoch {} batch {} train_loss {}  accuracy {}'.format(epoch+1, i+1, trainLoss / trainSize, trainAccuracy))
+        print('Epoch {}/{}'.format(epoch, epoch_nb))
+        print("---------")
+        print('train Loss: {}  Acc: {}'.format(trainLoss / trainSize, trainAccuracy))
+        trainLoss = 0.0 
+
 
             '''
             if(loss.item() > 1000):
                 print(loss.item())
                 for param in model.parameters():
                     print(param.data)
-            '''
+            
             # print statistics
             #trainLoss += loss.item()
             if i % 50 == 49:    # print every 2000 mini-batches
                 torch.save(model, '/content/drive/MyDrive/vgg16_epoch{}_batch{}_accuracy{:.3f}.pt'.format(epoch+1, i+1, trainAccuracy))
                 print('epoch {} batch {} train_loss {}  accuracy {}'.format(epoch+1, i+1, trainLoss / 50, trainAccuracy))
                 trainLoss = 0.0   # 이걸 해야할거같은..느낌...?
+            '''
 
 
         #if i % 5 == 0:
@@ -95,7 +110,9 @@ def train(model, trainloader, testloader):
                 valCorrect += predicted.eq(labels.view_as(predicted)).sum().item()
                 valAccuracy = (valCorrect / valSize) * 100
             
-            print('validation_loss {}'.format(valLoss))
+            #print('validation_loss {} validation_accuracy {}'.format(valLoss / valSize, valAccuracy))
+            print('val Loss: {}  Acc: {}'.format(valLoss / valSize, valAccuracy))
+            valLoss = 0.0
 
 
 
