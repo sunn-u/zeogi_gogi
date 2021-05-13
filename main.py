@@ -12,7 +12,7 @@ from train import train
 
 
 def main():
-    make_train_val_set(Configs.data_root)
+    trainloader, testloader = make_train_val_set(Configs.data_root)
     dataiter = iter(trainloader)
     images, labels = dataiter.next()
 
