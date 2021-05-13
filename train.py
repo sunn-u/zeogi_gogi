@@ -6,6 +6,7 @@ import torchvision.transforms as transforms
 
 import torch.nn as nn
 import torch.nn.functional as F
+    
 from configs import Configs
 from vggModule import *
 from MyDataLoader import *
@@ -15,8 +16,7 @@ def train(model, trainloader, testloader):
     model.train()
 
     classes = ('fear', 'happy', 'sad', 'neutral', 'disgust', 'surprise', 'angry')
-    import torch.optim as optim
-    import time
+    
 
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(),lr=0.00001)
