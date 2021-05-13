@@ -6,7 +6,7 @@ from torchvision.models.vgg import make_layers
 import matplotlib.pyplot as plt
 import numpy as np
 
-from vggModule import VGG
+from vggModule import *
 from configs import Configs
 from train import train
 
