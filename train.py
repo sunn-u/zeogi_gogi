@@ -71,31 +71,31 @@ def train(model, trainloader, testloader):
                 trainLoss = 0.0   # 이걸 해야할거같은..느낌...?
 
 
-        if i % 5 == 0:
-            with torch.no_grad():
-                valLoss = 0
-                valSize = 0
-                valCorrect = 0
+        #if i % 5 == 0:
+        with torch.no_grad():
+            valLoss = 0
+            valSize = 0
+            valCorrect = 0
 
-                for j, data in enumerate(testloader, 0):
-                    # get the inputs
-                    inputs, labels = data
-                    inputs, labels = inputs.to(device), labels.to(device)
+            for j, data in enumerate(testloader, 0):
+                # get the inputs
+                inputs, labels = data
+                inputs, labels = inputs.to(device), labels.to(device)
 
-                    # forward + backward + optimize
-                    model = model.float()
-                    #outputs,f = model(inputs)
-                    model = model.cuda()
-                    outputs = model(inputs)
+                # forward + backward + optimize
+                model = model.float()
+                #outputs,f = model(inputs)
+                model = model.cuda()
+                outputs = model(inputs)
 
-                    valLoss += criterion(outputs, labels).item()
+                valLoss += criterion(outputs, labels).item()
 
-                    predicted = outputs.max(1)[1]
-                    valSize += labels.shape[0]
-                    valCorrect += predicted.eq(labels.view_as(predicted)).sum().item()
-                    valAccuracy = (valCorrect / valSize) * 100
-                
-                print('validation_loss {}'.format(valLoss))
+                predicted = outputs.max(1)[1]
+                valSize += labels.shape[0]
+                valCorrect += predicted.eq(labels.view_as(predicted)).sum().item()
+                valAccuracy = (valCorrect / valSize) * 100
+            
+            print('validation_loss {}'.format(valLoss))
 
 
 
