@@ -71,21 +71,6 @@ def train(model, trainloader, testloader):
         trainLoss = 0.0 
 
 
-            '''
-            if(loss.item() > 1000):
-                print(loss.item())
-                for param in model.parameters():
-                    print(param.data)
-            
-            # print statistics
-            #trainLoss += loss.item()
-            if i % 50 == 49:    # print every 2000 mini-batches
-                torch.save(model, '/content/drive/MyDrive/vgg16_epoch{}_batch{}_accuracy{:.3f}.pt'.format(epoch+1, i+1, trainAccuracy))
-                print('epoch {} batch {} train_loss {}  accuracy {}'.format(epoch+1, i+1, trainLoss / 50, trainAccuracy))
-                trainLoss = 0.0   # 이걸 해야할거같은..느낌...?
-            '''
-
-
         #if i % 5 == 0:
         with torch.no_grad():
             valLoss = 0
