@@ -5,8 +5,9 @@ from torchvision import transforms, datasets
 import torchvision
 import sys
 
-DATA_PATH_TRAINING_LIST = glob('/Users/ahrim/Desktop/dataset/train/*/*.jpg')
-DATA_PATH_TESTING_LIST = glob('/Users/ahrim/Desktop/dataset/test/*/*.jpg')
+DATA_PATH_TRAINING_LIST = glob('/Users/ahrim/Desktop/train/*/*.jpg')
+DATA_PATH_VALIDATION_LIST = glob('/Users/ahrim/Desktop/validation/*/*.jpg')
+DATA_PATH_TESTING_LIST = glob('/Users/ahrim/Desktop/test/*/*.jpg')
 
 from torch.utils.data import Dataset, DataLoader
 from skimage import io
@@ -36,8 +37,6 @@ class MyFaceSet(Dataset):
         image = io.imread(self.path_list[idx], as_gray=True) ## 차원 맞추
         if self.transform is not None:
             image = self.transform(image)
-        print(self.classes)
-        # print(self.label)
         return image, self.classes.index(self.label[idx])
 
     def get_label(self, data_path_list):
