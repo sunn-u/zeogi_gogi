@@ -18,3 +18,6 @@ cd ja    # /content/ja
 
 # main 파일 실행 (/content/ja 에서 실행)
 !python main.py
+
+# test 파일
+test.py 로 실행
