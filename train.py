@@ -24,7 +24,7 @@ def train(model, trainloader, testloader):
 
 
     start_time = time.time()
-    for epoch in range(2):  # loop over the dataset multiple times
+    for epoch in range(Configs.epochs_nb):  # loop over the dataset multiple times
         trainLoss = 0.0
         trainSize = 0
         trainCorrect = 0
@@ -65,7 +65,7 @@ def train(model, trainloader, testloader):
             }, '/content/drive/MyDrive/vgg16_epoch{}_batch{}_accuracy{:.3f}.pth'.format(epoch+1, i+1, trainAccuracy))
 
         #print('epoch {} batch {} train_loss {}  accuracy {}'.format(epoch+1, i+1, trainLoss / trainSize, trainAccuracy))
-        print('Epoch {}/{}'.format(epoch, epoch_nb))
+        print('Epoch {}/{}'.format(epoch, Configs.epochs_nb))
         print("---------")
         print('train Loss: {}  Acc: {}'.format(trainLoss / trainSize, trainAccuracy))
         trainLoss = 0.0 

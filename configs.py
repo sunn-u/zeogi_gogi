@@ -9,4 +9,5 @@ class Configs:
     #train_percent = 0.9
     model_config = 'D'
     class_num = 7
+    epochs_nb = 10
 

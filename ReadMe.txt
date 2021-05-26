@@ -12,9 +12,9 @@ drive.mount('/content/gdrive/')
 !git clone https://github.com/jjung-ah/ja.git
 
 # 현재 위치 확인
-!pwd
+!pwd     # /content
 # 깃을 받은 경로로 이동
-cd ja
+cd ja    # /content/ja
 
-# main 파일 실행
+# main 파일 실행 (/content/ja 에서 실행)
 !python main.py
