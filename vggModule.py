@@ -7,10 +7,10 @@ import torch.nn.functional as F
 from configs import Configs
 
 
-class Vgg(nn.Module):
+class VGG(nn.Module):
 
     def __init__(self, conv, num_classes=100, init_weights=True):
-        super(Vgg, self).__init__()  # pytorch에서 class 형태의 모델은 항상 nn.Module을 상속받아야 하며, 
+        super(VGG, self).__init__()  # pytorch에서 class 형태의 모델은 항상 nn.Module을 상속받아야 하며, 
                                      # super(모델명, self).init()을 통해 nn.Module.init()을 실행시키는 코드가 필요
 
         self.features = conv    # features
@@ -34,7 +34,7 @@ class Vgg(nn.Module):
     def forward(self, x):  # 모델이 학습 데이터를 입력 받아서 forward prop을 진행시키는 함수
         #features = self.conv(x)
         x = self.features(x)
-        x = self.avgpool(x)
+        x = self.avgpool(x)   # Dropout 적용할때는 이 줄은 주석처리하고 학습해야함
         x = x.view(x.size(0), -1)   # x = torch.flatten(x, 1) 이걸로도 가능한것인지
         x = self.classifier(x)
         #x = self.softmax(x)

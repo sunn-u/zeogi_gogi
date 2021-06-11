@@ -9,5 +9,6 @@ class Configs:
     #train_percent = 0.9
     model_config = 'D'
     class_num = 7
-    epochs_nb = 10
+    epochs_nb = 100
+    model_path = "/data/FoodDetection/Object_Detection/yolov5-test/ssd/models/vgg16_epoch10_batch393_accuracy73.223.pt"
 
