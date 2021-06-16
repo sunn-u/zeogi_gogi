@@ -41,6 +41,11 @@ def train(model, trainloader, testloader):
     optimizer = optim.Adam(model.parameters(),lr=Configs.lr)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+    logger.info("Epochs {}".format(Configs.epochs_nb))
+    logger.info("Class Number {}".format(Configs.class_num))
+    logger.info("LearningRate {}".format(Configs.lr))
+    logger.info("ModelSize {}{}".format(Configs.model_name, Configs.model_config))
+
 
     start_time = time.time()
     for epoch in range(Configs.epochs_nb):  # loop over the dataset multiple times
